@@ -1,0 +1,1 @@
+# Smart-Face-Recognition-System-with-AWS-Rekognition-and-DynamoDB-Integration
