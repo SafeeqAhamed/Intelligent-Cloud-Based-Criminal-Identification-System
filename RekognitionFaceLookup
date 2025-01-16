@@ -1,0 +1,29 @@
+import boto3
+import io
+from PIL import Image
+
+rekognition_client = boto3.client('rekognition', region_name='ap-south-1')
+dynamo_client = boto3.client('dynamodb', region_name='ap-south-1')
+
+img = Image.open("xy.jpg")
+img_stream = io.BytesIO()
+img.save(img_stream, format="JPEG")
+img_bytes = img_stream.getvalue()
+
+response = rekognition_client.search_faces_by_image(
+    CollectionId='facial_collection',
+    Image={'Bytes': img_bytes}
+)
+
+for face_match in response['FaceMatches']:
+    print(face_match['Face']['FaceId'], face_match['Face']['Confidence'])
+
+    person = dynamo_client.get_item(
+        TableName='faceimage',
+        Key={'RekognitionId': {'S': face_match['Face']['FaceId']}}
+    )
+
+    if 'Item' in person:
+        print("The face identified is:", person['Item']['FullName']['S'])
+    else:
+        print('No match found in person lookup')
