@@ -2,18 +2,30 @@ import boto3
 import io
 from PIL import Image
 
+# Initialize the AWS Rekognition client for the specified region
 rekognition_client = boto3.client('rekognition', region_name='ap-south-1')
+
+# Initialize the AWS DynamoDB client for the specified region
 dynamo_client = boto3.client('dynamodb', region_name='ap-south-1')
 
+# Open the image file to be analyzed
 img = Image.open("xy.jpg")
+
+# Create an in-memory stream for the image
 img_stream = io.BytesIO()
+
+# Save the image in JPEG format to the in-memory stream
 img.save(img_stream, format="JPEG")
+
+# Get the byte representation of the image from the stream
 img_bytes = img_stream.getvalue()
 
+# Use Rekognition to search for faces in the specified collection using the image
 response = rekognition_client.search_faces_by_image(
-    CollectionId='facial_collection',
-    Image={'Bytes': img_bytes}
+    CollectionId='facial_collection',  # Name of the face collection in Rekognition
+    Image={'Bytes': img_bytes}         # Provide the image as byte data
 )
+
 
 for face_match in response['FaceMatches']:
     print(face_match['Face']['FaceId'], face_match['Face']['Confidence'])
