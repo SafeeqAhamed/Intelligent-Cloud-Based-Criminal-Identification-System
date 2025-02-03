@@ -1,0 +1,36 @@
+import boto3
+
+# Initialize the S3 resource
+s3_resource = boto3.resource('s3')
+
+# List of face images with corresponding metadata
+face_images_with_metadata = [
+    ('1.jpg', 'APJ Kalam'),
+    ('2.jpg', 'CV Raman'),
+    ('3.jpg', 'David Beckham'),
+    ('4.png', 'Albert Einstein'),
+    ('5.jpg', 'Isaac Newton'),
+    ('6.png', 'Lionel Messi'),
+    ('7.jpeg', 'Nikola Tesla'),
+    ('8.jpeg', 'Mahendra Singh Dhoni'),
+    ('9.jpeg', 'Mithali Raj'),
+    ('10.jpeg', 'Smriti Mandhana'),
+    ('11.jpeg', 'Hardik Pandya'),
+    ('12.jpeg', 'Yuvraj Singh'),
+    ('13.jpg', 'Sachin Tendulkar'),
+    ('14.jpeg', 'Yuzvendra Chahal'),
+    ('15.jpeg', 'Virat Kohli'),
+    ('16.jpg', 'Sunil Gavaskar'),
+    ('17.jpg', 'Kapil Dev'),
+    ('18.jpeg', 'Ruturaj Gaikwad'),
+    ('19.jpeg', 'Kiran Kumar Malik'),
+    ('20.jpeg', 'Thalapathy Vijay'),
+    ('21.jpeg', 'Shah Rukh Khan'),
+    ('22.jpg', 'Harleen Deol')
+]
+
+# Upload images with metadata to S3
+for face_image, full_name in face_images_with_metadata:
+    with open(face_image, 'rb') as image_file:
+        s3_object = s3_resource.Object('facialimagescollection', 'index/' + face_image)
+        response = s3_object.put(Body=image_file, Metadata={'FullName': full_name})
