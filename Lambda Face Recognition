@@ -1,1 +1,14 @@
+from __future__ import print_function
 
+import boto3
+from decimal import Decimal
+import json
+import urllib
+
+print('Loading function')
+
+dynamodb = boto3.client('dynamodb')
+s3 = boto3.client('s3')
+rekognition = boto3.client('rekognition')
+
+print("hello")
