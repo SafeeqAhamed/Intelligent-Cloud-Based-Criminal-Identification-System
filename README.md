@@ -23,46 +23,23 @@ With a **Tkinter-based GUI**, this system provides real-time criminal identifica
 ---
 
 ## 🏗️ System Architecture  
-+-----------------------+
-|   Upload Criminal     |
-|        Image          |
-+-----------------------+
-            |
-            v
-+-----------------------+
-|        S3 Bucket      |
-|  (Stored w/ Metadata) |
-+-----------------------+
-            |
-   (Trigger Event)
-            v
-+-----------------------+
-|    Lambda Function    |
-+-----------------------+
-     |             |
-     v             v
-+-----------------+   +--------------------------+
-| Face Detection  |   | Store FaceId + Metadata |
-| (Rekognition)   |   |   in DynamoDB Records   |
-+-----------------+   +--------------------------+
-            |
-            v
-+-----------------------+
-|   Run GUI - Tkinter   |
-|   (Upload Suspect)    |
-+-----------------------+
-            |
-            v
-+-----------------------+
-| Face Match Results    |
-+-----------------------+
-            |
-            v
-+-----------------------+
-| Identified Criminal   |
-|        Info           |
-+-----------------------+
-
+```text
+[Upload Image] 
+      |
+      v
+ [S3 Bucket]
+      |
+      v
+ [Lambda Function]
+   /           \
+  v             v
+[Rekognition]  [DynamoDB]
+      |
+      v
+   [GUI]
+      |
+      v
+[Criminal Info]
 
 🚀 Tech Stack
 
