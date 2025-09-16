@@ -24,7 +24,7 @@ With a **Tkinter-based GUI**, this system provides real-time criminal identifica
 
 ## 🏗️ System Architecture  
 
-```mermaid
+ 
 flowchart TD
     A[Upload Criminal Image] -->|Stored with Metadata| B[S3 Bucket]
     B -->|Trigger Event| C[Lambda Function]
