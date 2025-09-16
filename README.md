@@ -9,7 +9,7 @@ The **Intelligent Cloud-Based Criminal Identification System** leverages **AWS R
 
 With a **Tkinter-based GUI**, this system provides real-time criminal identification with details like **Name, Crime Type, and Wanted Status**.  
 
----
+ 
 
 ## ✨ Features  
 
@@ -23,16 +23,45 @@ With a **Tkinter-based GUI**, this system provides real-time criminal identifica
 ---
 
 ## 🏗️ System Architecture  
-
- 
-flowchart TD
-    A[Upload Criminal Image] -->|Stored with Metadata| B[S3 Bucket]
-    B -->|Trigger Event| C[Lambda Function]
-    C -->|Face Detection| D[AWS Rekognition Collection]
-    C -->|Store FaceId + Metadata| E[DynamoDB Criminal Records]
-    F[Run GUI - Tkinter] -->|Upload Suspect Image| D
-    D -->|Face Match Results| F
-    F -->|Display Details| G[Identified Criminal Info]
++-----------------------+
+|   Upload Criminal     |
+|        Image          |
++-----------------------+
+            |
+            v
++-----------------------+
+|        S3 Bucket      |
+|  (Stored w/ Metadata) |
++-----------------------+
+            |
+   (Trigger Event)
+            v
++-----------------------+
+|    Lambda Function    |
++-----------------------+
+     |             |
+     v             v
++-----------------+   +--------------------------+
+| Face Detection  |   | Store FaceId + Metadata |
+| (Rekognition)   |   |   in DynamoDB Records   |
++-----------------+   +--------------------------+
+            |
+            v
++-----------------------+
+|   Run GUI - Tkinter   |
+|   (Upload Suspect)    |
++-----------------------+
+            |
+            v
++-----------------------+
+| Face Match Results    |
++-----------------------+
+            |
+            v
++-----------------------+
+| Identified Criminal   |
+|        Info           |
++-----------------------+
 
 
 🚀 Tech Stack
