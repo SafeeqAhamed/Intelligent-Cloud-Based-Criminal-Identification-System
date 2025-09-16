@@ -13,12 +13,12 @@ With a **Tkinter-based GUI**, this system provides real-time criminal identifica
 
 ## ✨ Features  
 
-- ✅ **Automatic Face Detection & Indexing** using AWS Rekognition  
-- ✅ **Metadata Storage** (Name, Crime Type, Wanted Status) in S3 + DynamoDB  
-- ✅ **Lambda Automation** on image upload  
-- ✅ **Tkinter GUI** for live face matching and visualization  
-- ✅ **Flash & Fade Effects** for real-time results  
-- ✅ **Scalable & Cloud-Native** architecture  
+- **Automatic Face Detection & Indexing** using AWS Rekognition  
+- **Metadata Storage** (Name, Crime Type, Wanted Status) in S3 + DynamoDB  
+- **Lambda Automation** on image upload  
+- **Tkinter GUI** for live face matching and visualization  
+- **Flash & Fade Effects** for real-time results  
+- **Scalable & Cloud-Native** architecture  
 
 ---
 
