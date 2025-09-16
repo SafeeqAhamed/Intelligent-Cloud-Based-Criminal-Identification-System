@@ -1,1 +1,1 @@
-# Smart-Face-Recognition-System-with-AWS-Rekognition-and-DynamoDB-Integration
+# Intelligent Cloud-Based Criminal Identification System
