@@ -1,6 +1,6 @@
 # 🕵️ Intelligent Cloud-Based Criminal Identification System  
 
-![Project Diagram](Screenshot 2025-09-16 190803.png) <!-- Replace with your diagram file -->
+![Project Diagram](Screenshot%202025-09-16%20190803.png) <!-- Replace with your diagram file -->
 
 ---
 
